@@ -1,0 +1,29 @@
+{
+  "name": "resizable-columns",
+  "version": "1.0.0",
+  "description": "javascript plugin to resize table columns",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production MODULES_ENV=cjs babel ./src -d lib --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenjianbin",
+  "license": "ISC",
+  "keywords": [
+    "javascirpt",
+    "resizable-columns-table",
+    "resizable-columns",
+    "html",
+    "table resize",
+    "resizable columns",
+    "resizable"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.0.2"
+  }
+}
