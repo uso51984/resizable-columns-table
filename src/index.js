@@ -1,5 +1,6 @@
 import isElement from 'lodash/isElement';
 import ColResizable from './colResizable';
+import '../style/index.less';
 
 const createColResizable = (domEleTable, options) => {
   if (isElement(domEleTable) && domEleTable.nodeName === 'TABLE') {

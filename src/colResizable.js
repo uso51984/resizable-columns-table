@@ -6,8 +6,6 @@ import {
   addClass
 } from './utils';
 
-import './index.less';
-
 export default class ColResizable {
   static defaults = {
     liveDrag: true,
