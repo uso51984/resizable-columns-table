@@ -1,3 +1,5 @@
+### 在线demo
+http://uso.oschina.io/resizable-colmuns-table/
 ### 运行demo
 ```
 npm install
