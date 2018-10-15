@@ -9,7 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "chenjianbin",
-  "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/uso51984/resizable-columns-table"
+  },
+  "license": "MIT",
   "keywords": [
     "javascirpt",
     "resizable-columns-table",
