@@ -1,6 +1,6 @@
 {
   "name": "resizable-columns",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "javascript plugin to resize table columns",
   "main": "lib/index.js",
   "scripts": {
@@ -10,8 +10,8 @@
   },
   "author": "chenjianbin",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/uso51984/resizable-columns-table"
+    "type": "git",
+    "url": "https://github.com/uso51984/resizable-columns-table"
   },
   "license": "MIT",
   "keywords": [
