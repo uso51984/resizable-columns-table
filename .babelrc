@@ -1,11 +1,21 @@
 {
-  "presets": ["./build/envPreset.js", "stage-0"],
+  "presets": ["react", "es2015", "stage-0"],
   "plugins": [
-    ["transform-runtime", {
-      "polyfill": false
-    }],
+    "transform-runtime",
     "add-module-exports"
   ],
   "sourceMaps": true,
-  "retainLines": true
+  "retainLines": true,
+  "env": {
+    "development": {
+      "plugins": [
+        ["react-transform", {
+          "transforms": [{
+            "transform": "react-transform-catch-errors",
+            "imports": ["react", "redbox-react"]
+          }]
+        }]
+      ]
+    }
+  }
 }
