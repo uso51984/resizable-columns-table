@@ -3,7 +3,7 @@ import React from 'react';
 export default class Table extends React.PureComponent {
   render() {
     return (
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{ width: 900 }}>
         <thead>
           <tr>
             <th>#</th>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './Table'
-import createColResizable from '../src';
+import createColResizable from '../lib';
+import '../assets/index.css';
 
 export default class ResizableTable extends React.PureComponent {
   componentDidMount() {
@@ -9,6 +10,10 @@ export default class ResizableTable extends React.PureComponent {
       liveDrag: true
     });
     createColResizable(domElemTableList[1], {
+      liveDrag: false,
+      headerOnly: false
+    });
+    createColResizable(domElemTableList[2], {
       liveDrag: false,
       headerOnly: false
     });
@@ -21,6 +26,10 @@ export default class ResizableTable extends React.PureComponent {
         <Table />
         <h4>liveDrag: false</h4>
         <Table />
+        <h4>other</h4>
+        <div style={{ width: 500, overflow: 'auto' }}>
+          <Table />
+        </div>
       </div>
     )
   }

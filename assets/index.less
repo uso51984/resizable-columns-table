@@ -1,0 +1,60 @@
+.col-resize-container {
+  height: 0px;
+  position: relative;
+
+  & + .table-col-resizer:first-of-type {
+    table-layout: fixed;
+  }
+
+  .active-drag .icon{
+    visibility: visible;
+  }
+
+  .last-handle {
+    display: none;
+  }
+
+  .drag-handle {
+    margin-left: -5px;
+    position: absolute;
+    z-index: 5;
+    width: 10px;
+    cursor: col-resize;
+
+    .icon {
+      color: #40b0dc;
+      top: -1px;
+      position: absolute;
+      visibility: hidden;
+
+      &:first-child {
+        left: -2px
+      }
+      &:last-child {
+        left: 6px
+      }
+    }
+
+    &:hover{
+      .icon{
+        visibility: visible;
+      }
+      .col-resizer {
+        border: 1px solid;
+      }
+    }
+
+    &.disabled-drag {
+      cursor: default;
+      display: none;
+    }
+
+    .col-resizer {
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      top: 0px;
+      left: 3px;
+    }
+  }
+}
