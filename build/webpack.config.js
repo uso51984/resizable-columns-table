@@ -17,7 +17,7 @@ module.exports = {
   context: process.cwd(),
   entry: {
     vendor: ['react', 'react-dom'],
-    app: ['./demo/app.jsx'],
+    app: ['./reactDemo/app.jsx'],
   },
   plugins,
   resolve: {
