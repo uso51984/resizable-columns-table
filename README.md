@@ -1,17 +1,112 @@
 ### 在线demo
 http://uso.oschina.io/resizable-colmuns-table/
 
-### 安装
+### 一、模块化使用
+#### 模块化安装
 ```
 npm i resizable-columns
 ```
 
-### 使用
+#### 使用
 ```
 import createColResizable from colResizeable
 
 createColResizable(domElemTable, otions)
 ```
+
+### 二、直接html引用使用
+
+下载项目dist里面resizable-columns-table.js或者resizable-columns-table.min.js， 在assets里面下载index.css
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>normal demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+</head>
+  <body>
+      <h4>liveDrag: true</h4>
+    <table class="table table-bordered" style="width: 900px">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>liveDrag: false</h4>
+    <table class="table table-bordered" style="width: 900px ">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+  </body>
+  <script src="./resizable-columns-table.js"></script>
+  <script>
+    const domElemTableList = document.querySelectorAll('.table');
+    createColResizable(domElemTableList[0], {
+      liveDrag: true
+    });
+    createColResizable(domElemTableList[1], {
+      liveDrag: false,
+      headerOnly: false
+    });
+  </script>
+</html>
+
+```
+
 
 ### api
 
