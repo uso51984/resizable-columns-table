@@ -1,21 +1,14 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addClass = addClass;
-exports.removeClass = removeClass;
-var isFunction = exports.isFunction = function isFunction(value) {
+export var isFunction = function isFunction(value) {
   return Object.prototype.toString.call(value) === '[object Function]';
 };
-var isArray = exports.isArray = function isArray(value) {
+export var isArray = function isArray(value) {
   return Object.prototype.toString.call(value) === '[object Array]';
 };
-var isElement = exports.isElement = function isElement(value) {
+export var isElement = function isElement(value) {
   return Object.prototype.toString.call(value) === '[object HTMLTableElement]';
 };
 
-var tryParseInt = exports.tryParseInt = function tryParseInt(value) {
+export var tryParseInt = function tryParseInt(value) {
   var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
   var resultValue = parseInt(value, 10);
@@ -26,7 +19,7 @@ var tryParseInt = exports.tryParseInt = function tryParseInt(value) {
   return resultValue;
 };
 
-function addClass(elm, className) {
+export function addClass(elm, className) {
   if (!className) return;
 
   var els = Array.isArray(elm) ? elm : [elm];
@@ -40,7 +33,7 @@ function addClass(elm, className) {
   });
 }
 
-function removeClass(elm, className) {
+export function removeClass(elm, className) {
   if (!className) return;
 
   var els = Array.isArray(elm) ? elm : [elm];

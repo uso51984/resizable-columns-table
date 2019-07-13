@@ -1,16 +1,10 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = require('./utils');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+import { tryParseInt, isFunction, isArray, removeClass, addClass } from './utils';
 
 var ColResizable = function () {
   function ColResizable(domElmTable) {
@@ -31,14 +25,14 @@ var ColResizable = function () {
   _createClass(ColResizable, [{
     key: 'init',
     value: function init() {
-      (0, _utils.addClass)(this.domElmTable, 'table-col-resizer');
+      addClass(this.domElmTable, 'table-col-resizer');
 
       this.domElmHandleList = [];
       this.domElmTableTheadThList = [];
       this.tableWidth = this.domElmTable.offsetWidth + 'px';
 
-      this.cellSpacing = (0, _utils.tryParseInt)(getComputedStyle(this.domElmTable).getPropertyValue('border-spacing'));
-      this.borderLeftWidth = (0, _utils.tryParseInt)(getComputedStyle(this.domElmTable).getPropertyValue('border-left-width'));
+      this.cellSpacing = tryParseInt(getComputedStyle(this.domElmTable).getPropertyValue('border-spacing'));
+      this.borderLeftWidth = tryParseInt(getComputedStyle(this.domElmTable).getPropertyValue('border-left-width'));
 
       this.createGrips();
     }
@@ -67,7 +61,7 @@ var ColResizable = function () {
       var disabledColumns = this.options.disabledColumns;
 
 
-      if (!(0, _utils.isArray)(disabledColumns)) {
+      if (!isArray(disabledColumns)) {
         disabledColumns = [];
       }
 
@@ -82,13 +76,13 @@ var ColResizable = function () {
         }
 
         if (index === _this.lastThIndex && !hasHandleContainer) {
-          (0, _utils.addClass)(domElmHandle, 'last-handle');
+          addClass(domElmHandle, 'last-handle');
         }
 
         if (!disabledColumn && !hasHandleContainer) {
           domElmHandle.addEventListener('mousedown', _this.onGripMouseDown);
         } else if (disabledColumn && !hasHandleContainer) {
-          (0, _utils.addClass)(domElmHandle, 'disabled-drag');
+          addClass(domElmHandle, 'disabled-drag');
         }
 
         domElmHandle.index = index;
@@ -124,7 +118,7 @@ var ColResizable = function () {
           left = domElmTh.offsetWidth + this.cellSpacing / 2;
         } else {
           var handleColLeft = this.domElmHandleList[i - 1].style.left + this.cellSpacing / 2;
-          left = (0, _utils.tryParseInt)(handleColLeft) + domElmTh.offsetWidth;
+          left = tryParseInt(handleColLeft) + domElmTh.offsetWidth;
         }
 
         this.domElmHandleList[i].style.left = left + 'px';
@@ -139,7 +133,7 @@ var ColResizable = function () {
 
       domElmIconList.forEach(function (el) {
         var marginTopNumber = (theadHight - iconHeight) / 2;
-        el.style.marginTop = (0, _utils.tryParseInt)(marginTopNumber) + 'px';
+        el.style.marginTop = tryParseInt(marginTopNumber) + 'px';
       });
     }
   }, {
@@ -150,10 +144,10 @@ var ColResizable = function () {
 
       var domElmHandle = this.domElmHandleList[index];
 
-      (0, _utils.addClass)(domElmHandle, 'active-drag');
+      addClass(domElmHandle, 'active-drag');
 
       domElmHandle.initPageLeftX = e.pageX;
-      domElmHandle.initLeft = (0, _utils.tryParseInt)(domElmHandle.style.left);
+      domElmHandle.initLeft = tryParseInt(domElmHandle.style.left);
       domElmHandle.x = domElmHandle.initLeft;
       this.drag = domElmHandle;
 
@@ -179,9 +173,9 @@ var ColResizable = function () {
       var x = pageLeftX - this.drag.initPageLeftX + this.drag.initLeft;
 
       var l = this.cellSpacing * 1.5 + minWidth + this.borderLeftWidth;
-      var min = index ? (0, _utils.tryParseInt)(this.domElmHandleList[index - 1].style.left) + this.cellSpacing + minWidth : l;
+      var min = index ? tryParseInt(this.domElmHandleList[index - 1].style.left) + this.cellSpacing + minWidth : l;
 
-      var max = (0, _utils.tryParseInt)(this.domElmHandleList[index + 1].style.left) - this.cellSpacing - minWidth;
+      var max = tryParseInt(this.domElmHandleList[index + 1].style.left) - this.cellSpacing - minWidth;
 
       x = Math.max(min, Math.min(max, x));
 
@@ -191,8 +185,8 @@ var ColResizable = function () {
 
       var w = domElmThNow.w + inc;
       var w2 = domElmThElmNext.w - inc;
-      var minWidthOne = (0, _utils.tryParseInt)(this.domElmTableTheadThList[index].getAttribute('data-min-width'));
-      var minWidthTwo = (0, _utils.tryParseInt)(this.domElmTableTheadThList[index + 1].getAttribute('data-min-width'));
+      var minWidthOne = tryParseInt(this.domElmTableTheadThList[index].getAttribute('data-min-width'));
+      var minWidthTwo = tryParseInt(this.domElmTableTheadThList[index + 1].getAttribute('data-min-width'));
 
       if (minWidthOne > w) {
         x = minWidthOne - domElmThNow.w + this.drag.initLeft;
@@ -209,7 +203,7 @@ var ColResizable = function () {
         var onResizing = this.options.onResizing;
 
 
-        if ((0, _utils.isFunction)(onResizing)) {
+        if (isFunction(onResizing)) {
           onResizing(e);
         }
       }
@@ -244,7 +238,7 @@ var ColResizable = function () {
         return false;
       }
 
-      (0, _utils.removeClass)(this.drag, 'active-drag');
+      removeClass(this.drag, 'active-drag');
       if (!(this.drag.x - this.drag.initLeft === 0)) {
         var index = this.drag.index;
         this.syncCols(index, true);
@@ -252,7 +246,7 @@ var ColResizable = function () {
 
         var onResized = this.options.onResized;
 
-        if ((0, _utils.isFunction)(onResized)) {
+        if (isFunction(onResized)) {
           onResized(e);
         }
       }
@@ -273,5 +267,4 @@ ColResizable.defaults = {
   onResizing: null,
   onResized: null
 };
-exports['default'] = ColResizable;
-module.exports = exports['default'];
+export default ColResizable;
