@@ -1,5 +1,5 @@
 ### 在线demo
-http://uso.oschina.io/resizable-colmuns-table/
+https://uso51984.github.io/resizable-columns-table/
 
 ### 一、模块化使用
 #### 模块化安装
