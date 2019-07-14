@@ -1,15 +1,18 @@
 {
-  "name": "createColResizable",
-  "version": "1.0.4",
+  "name": "resizable-columns-table",
+  "version": "1.0.5",
   "description": "javascript plugin to resize table columns",
   "main": "lib/index.js",
   "scripts": {
     "dist": "bee-tools run dist",
-    "examples": "webpack-dev-server --config ./webpack.dev.js",
-    "compile": "bee-tools run compile"
+    "dev": "webpack-dev-server --config ./webpack.dev.js",
+    "compile": "bee-tools run compile",
+    "buildExample": "bee-tools run buildExample",
+    "gh-pages": "bee-tools run gh-pages",
+    "publish": "bee-tools run publish"
   },
   "config": {
-    "name": "resizable-columns-table",
+    "name": "createColResizable",
     "entry": {
       "resizable-columns-table": [
         "./src/index.js"
@@ -32,7 +35,7 @@
     "resizable"
   ],
   "devDependencies": {
-    "bee-build-tools": "0.0.17",
+    "bee-build-tools": "0.0.18",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
