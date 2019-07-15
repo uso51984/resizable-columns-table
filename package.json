@@ -17,6 +17,10 @@
       "resizable-columns-table": [
         "./src/index.js"
       ]
+    },
+    "server": {
+      "htmlTemplatePath": "./examples/index.html",
+      "port": 9200
     }
   },
   "author": "chenjianbin",
@@ -35,11 +39,8 @@
     "resizable"
   ],
   "devDependencies": {
-    "bee-build-tools": "0.0.18",
-    "child-process-promise": "^2.2.1",
-    "colors": "^1.3.3",
+    "bee-build-tools": "0.0.26",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "readline-sync": "^1.4.9"
+    "react-dom": "^16.8.6"
   }
 }
